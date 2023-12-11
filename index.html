@@ -61,6 +61,7 @@
     The experiment was actually quite successful.
     The approach should be suitable for projects that require
     (or benefit from) reactive state management anyway.
+    A typical example for this would be the configuration of complex products.
   </p>
 
   <h2>Performance study based on the Fast Fourier Transformation (FFT)</h2>
@@ -84,10 +85,15 @@
     <li>programming languages:
       TypeScript, C++, Rust, and even a small home-grown language
     </li>
-    <li>Runtime technologies:
+    <li>runtime technologies:
       JavaScript, Web Assembly (WASM), native code (not in the browser demo)
     </li>
   </ul>
+  <p>
+    The performance tests can take quite a while.
+    Therefore they run in a Web Worker, avoiding a frozen UI
+    and allowing to interrupt the tests.
+  </p>
   <p>
     The FFT demo includes two application demos, which are more entertaining:
   </p>
