@@ -13,12 +13,17 @@
       color: #ffc;
     }
     h1 {
-      font-size: 170%;
+      font-size: 200%;
       margin-bottom: 0;
     }
     h2 {
       font-size: 120%;
       margin-top: 4ex;
+      /* text-decoration: underline; */
+      &:before {
+        content: counter(h2counter) ". ";
+        counter-increment: h2counter;
+      }
     }
     a {
       color: #aaf;
