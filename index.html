@@ -25,6 +25,9 @@
       margin-top: 4ex;
       /* text-decoration: underline; */
     }
+    h1 {
+      counter-reset: h2counter;
+    }
     h2:before {
       content: counter(h2counter) ". ";
       counter-increment: h2counter;
