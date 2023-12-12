@@ -4,6 +4,10 @@
   <title>Code and Demos by Heribert Schütz</title>
   <!-- <meta name='viewport' content='width=device-width, initial-scale=1'> -->
   <style>
+    /*
+    According to caniuse.com there are still too many browsers in use
+    without CSS-nesting support.  So I unnested.
+     */
     body {
       font-family: Arial, Helvetica, sans-serif;
       max-width: 700px;
@@ -20,22 +24,22 @@
       font-size: 120%;
       margin-top: 4ex;
       /* text-decoration: underline; */
-      &:before {
-        content: counter(h2counter) ". ";
-        counter-increment: h2counter;
-      }
+    }
+    h2:before {
+      content: counter(h2counter) ". ";
+      counter-increment: h2counter;
     }
     a {
       color: #aaf;
-      &:hover {
-        color: #ccf;
-      }
-      &:visited {
-        color: #aa8;
-        &:hover {
-          color: #cca;
-        }
-      }
+    }
+    a:hover {
+      color: #ccf;
+    }
+    a:visited {
+      color: #aa8;
+    }
+    a:visited:hover {
+      color: #cca;
     }
     code {
       font-size: 120%;
