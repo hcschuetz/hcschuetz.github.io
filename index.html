@@ -61,90 +61,6 @@
     also be of interest for others.
   </p>
 
-  <h2>TodoMVC with MobX, Custom Elements and JSX</h2>
-
-  <a href="./todomvc-mobx-jsx/dist/">Demo</a>,
-  <a href="https://github.com/hcschuetz/todomvc-mobx-jsx">Source</a>
-
-  <p>
-    In this project I have explored an approach for building web applications
-    based on a reactive state
-    (provided by <em>MobX</em> and <em><code>mobx-keystone</code></em>).
-    The idea was that the reactive state can be mapped to a UI dynamically
-    so that a powerful framework such as React is no more needed.
-  </p>
-  <p>
-    I do, however, use a light-weight home-grown <em>JSX</em> implementation,
-    which makes the application code succinct and readable.
-  </p>
-  <p>
-    <em>Custom elements</em>
-    (one of the technologies for Web Components, supported directly by browsers)
-    help to structure the application.
-  </p>
-  <p>
-    The experiment was actually quite successful.
-    The approach should be suitable for projects that require
-    (or benefit from) reactive state management anyway.
-    A typical example for this would be the configuration of complex products.
-  </p>
-
-  <h2>Performance study based on the Fast Fourier Transformation (FFT)</h2>
-
-  <a href="./fft/build/">Demo</a>,
-  <a href="https://github.com/hcschuetz/fft">Source</a>
-
-  <p>
-    With this project I investigated high-performance-computing capabilities
-    of the Web platform.
-    The Fast Fourier Transformation was chosen as a number-crunching example
-    with non-trivial complexity,
-    but which is still simple enough to implement various versions.
-  </p>
-  <p>
-    The FFT implementations vary in several aspects:
-  </p>
-  <ul>
-    <li>home-grown and third-party implementations</li>
-    <li>from very naive to quite refined algorithms</li>
-    <li>programming languages:
-      TypeScript, C++, Rust, and even a small home-grown language
-    </li>
-    <li>runtime technologies:
-      JavaScript, Web Assembly (WASM),
-      native code (for comparison, not in the browser demo)
-    </li>
-  </ul>
-  <p>
-    The performance tests can take quite a while.
-    Therefore they run in a Web Worker, avoiding a frozen UI
-    and allowing to interrupt the tests.
-  </p>
-  <p>
-    The FFT demo includes two application demos, which are more entertaining:
-  </p>
-  <ul>
-    <li>
-      <a href="fft/build/#ClockworkDemo">One demo</a>
-      uses FFT to create moving graphical output
-      (using SVG or the <code>Canvas</code> API)
-    </li>
-    <li>
-      <a href="fft/build#AudioDemo">The other demo</a>
-      uses FFT to analyze sound input captured with the Web Audio API.
-    </li>
-  </ul>
-  
-  <h2>Guitar Simulation</h2>
-  
-  <a href="guitar-simulation/">Demo</a>,
-  <a href="https://github.com/hcschuetz/guitar-simulation">Source</a>
-
-  <p>
-    While the audio demo in the FFT project analyzes <em>incoming audio</em>,
-    this project uses the Web Audio API to synthesize <em>outgoing audio</em>.
-  </p>
-
   <h2>The Scaling Factor in the Gaussian Distribution</h2>
 
   <a href="gaussian-scaling/dist/">Demo</a>,
@@ -202,5 +118,89 @@
     <li>Live interaction with the slides is possible.</li>
     <li>Slides can be published easily for the audience to play with.</li>
   </ul>
+
+  <h2>Performance study based on the Fast Fourier Transformation (FFT)</h2>
+
+  <a href="./fft/build/">Demo</a>,
+  <a href="https://github.com/hcschuetz/fft">Source</a>
+
+  <p>
+    With this project I investigated high-performance-computing capabilities
+    of the Web platform.
+    The Fast Fourier Transformation was chosen as a number-crunching example
+    with non-trivial complexity,
+    but which is still simple enough to implement various versions.
+  </p>
+  <p>
+    The FFT implementations vary in several aspects:
+  </p>
+  <ul>
+    <li>home-grown and third-party implementations</li>
+    <li>from very naive to quite refined algorithms</li>
+    <li>programming languages:
+      TypeScript, C++, Rust, and even a small home-grown language
+    </li>
+    <li>runtime technologies:
+      JavaScript, Web Assembly (WASM),
+      native code (for comparison, not in the browser demo)
+    </li>
+  </ul>
+  <p>
+    The performance tests can take quite a while.
+    Therefore they run in a Web Worker, avoiding a frozen UI
+    and allowing to interrupt the tests.
+  </p>
+  <p>
+    The FFT demo includes two application demos, which are more entertaining:
+  </p>
+  <ul>
+    <li>
+      <a href="fft/build/#ClockworkDemo">One demo</a>
+      uses FFT to create moving graphical output
+      (using SVG or the <code>Canvas</code> API)
+    </li>
+    <li>
+      <a href="fft/build#AudioDemo">The other demo</a>
+      uses FFT to analyze sound input captured with the Web Audio API.
+    </li>
+  </ul>
+  
+  <h2>Guitar Simulation</h2>
+  
+  <a href="guitar-simulation/">Demo</a>,
+  <a href="https://github.com/hcschuetz/guitar-simulation">Source</a>
+
+  <p>
+    While the audio demo in the FFT project analyzes <em>incoming audio</em>,
+    this project uses the Web Audio API to synthesize <em>outgoing audio</em>.
+  </p>
+
+  <h2>TodoMVC with MobX, Custom Elements and JSX</h2>
+
+  <a href="./todomvc-mobx-jsx/dist/">Demo</a>,
+  <a href="https://github.com/hcschuetz/todomvc-mobx-jsx">Source</a>
+
+  <p>
+    In this project I have explored an approach for building web applications
+    based on a reactive state
+    (provided by <em>MobX</em> and <em><code>mobx-keystone</code></em>).
+    The idea was that the reactive state can be mapped to a UI dynamically
+    so that a powerful framework such as React is no more needed.
+  </p>
+  <p>
+    I do, however, use a light-weight home-grown <em>JSX</em> implementation,
+    which makes the application code succinct and readable.
+  </p>
+  <p>
+    <em>Custom elements</em>
+    (one of the technologies for Web Components, supported directly by browsers)
+    help to structure the application.
+  </p>
+  <p>
+    The experiment was actually quite successful.
+    The approach should be suitable for projects that require
+    (or benefit from) reactive state management anyway.
+    A typical example for this would be the configuration of complex products.
+  </p>
 </body>
 </html>
