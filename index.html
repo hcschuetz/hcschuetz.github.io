@@ -13,46 +13,50 @@
       max-width: 700px;
       margin: 0 auto;
       padding: 2rem;
-      background-color: #002;
-      color: #ffc;
+      background-color: #ccd;
+      color: #222;
+    }
+    .box {
+      margin: 3ex 0px;
+      padding: 12px;
+      box-shadow: 3px 4px 7px 3px #888;
+      background-color: #fff;
+    }
+    .box, .shadow {
+      box-shadow: 3px 4px 7px 3px #888;
+      background-color: #fff;
     }
     h1 {
-      font-size: 200%;
+      font-size: 150%;
       margin-bottom: 0;
     }
     h2 {
+      margin-top: 0;
       font-size: 120%;
-      margin-top: 4ex;
-      /* text-decoration: underline; */
+      font-weight: bold;
+      border-bottom: 1px solid #222;
     }
-    h1 {
-      counter-reset: h2counter;
-    }
-    h2:before {
-      content: counter(h2counter) ". ";
-      counter-increment: h2counter;
-    }
-    h2 {
-      counter-reset: h3counter;
-    }
-    h3:before {
-      content: counter(h2counter) "." counter(h3counter) " ";
-      counter-increment: h3counter;
-    }
-    a {
-      color: #aaf;
-    }
-    a:hover {
-      color: #ccf;
-    }
-    a:visited {
-      color: #aa8;
-    }
-    a:visited:hover {
-      color: #cca;
+    h3 {
+      font-weight: bold;
+      font-size: 100%
     }
     code {
       font-size: 120%;
+    }
+    #toc {
+      position: fixed;
+      z-index: 10;
+      top: 8px;
+      right: 8px;
+      padding: 5px;
+      background-color: #fff;
+    }
+    #toc a {
+      color: #222;
+      text-decoration: none;
+    }
+    #toc a:hover {
+      color: #777;
     }
   </style>
 </head>
@@ -62,242 +66,271 @@
     font-size: 120%;
     font-style: italic;
     margin: 0.5rem 0 2rem;
+    /* text-align: center; */
   ">Heribert Schütz</p>
 
   <p>
     Like many others I have implemented various experimental projects to
     investigate technologies or just for fun.
-    This site contains a small selection of projects that might
+    This site contains a selection of projects that might
     also be of interest for others.
   </p>
 
-  <h2>Rendering Spheres</h2>
+  <div class="box">
+    <h2>Rendering Spheres</h2>
 
-  <p>
-    You know how to render a sphere.
-    Or you don't even care because your graphics library provides an API call
-    for creating a sphere.  
-  </p>
-  <p>
-    Nevertheless, here are some ideas about rendering spheres
-    that may be helpful for you
-    (or for the developers of your favorite graphics lib).
-    Several of these ideas are probably new.
-    At least I have not found them elsewhere.
-  </p>
-  <p>
-    In addition to the math/geometry aspects,
-    with this code I also explored
-  </p>
-  <ul>
-    <li>the BabylonJS 3D engine and</li>
-    <li>using MobX (without React) for state management.</li>
-  </ul>
+    <p>
+      You know how to render a sphere.
+      Or you don't even care
+      because your graphics library provides an API for creating a sphere.  
+    </p>
+    <p>
+      Nevertheless, here are some ideas about rendering spheres
+      that may be helpful for you
+      (or for the developers of your favorite graphics lib).
+      Several of these ideas are probably new.
+      At least I have not found them elsewhere.
+    </p>
+    <p>
+      In addition to the math/geometry aspects,
+      with this code I also explored
+    </p>
+    <ul>
+      <li>the BabylonJS 3D engine and</li>
+      <li>using MobX (without React) for state management.</li>
+    </ul>
 
-  <h3>Octaspheres</h3>
+    <h3>Octaspheres</h3>
 
-  <a href="https://github.com/hcschuetz/octasphere/#readme">README</a>,
-  <a href="octasphere/presentation/dist">presentation</a>
-  (<a href="https://github.com/hcschuetz/octasphere/tree/main/presentation">Source</a>),
-  <a href="octasphere/lab/dist">experimentation lab</a>
-  (<a href="https://github.com/hcschuetz/octasphere/tree/main/lab">Source</a>)
-
-  <p>
-    This project investigates the rendering of a sphere based on an octahedron.
-    It suggests and compares several approaches for
-    placing the auxiliary vertices of the sphere triangulation.
-  </p>
-
-  <h3>Texturing</h3>
-
-  <a href="https://github.com/hcschuetz/sphere-texturing/#readme">README</a>,
-  <a href="sphere-texturing/map-transformations/dist">presentation</a>
-  (<a href="https://github.com/hcschuetz/sphere-texturing/tree/main/map-transformations">Source</a>),
-  <a href="sphere-texturing/earth/dist">experimentation lab</a>
-  (<a href="https://github.com/hcschuetz/sphere-texturing/tree/main/earth">Source</a>)
-
-  <p>
-    This project investigates ways to prepare and apply textures for a sphere.
-    In particular it shows how to replace heavily distorted equirectangular maps
-    with less distorted maps based on octaspheres and icospheres.
-    It also provides memory-efficient sprite-sheet layouts for octaspheres and
-    icospheres.
-  </p>
-
-  <h2>The Scaling Factor in the Gaussian Distribution</h2>
-
-  <a href="gaussian-scaling/dist/">Demo</a>,
-  <a href="https://github.com/hcschuetz/gaussian-scaling">Source</a>
-
-  <p>
-    This project had two goals:
-  </p>
-  <ol>
-    <li>
-      <p>
-        Explaining the scaling factor 1/sqrt(2π) in the formula for the
-        Gaussian distribution (also called "normal" distribution).
-      </p>
-    </li>
-    <li>
-      <p>
-        Experimenting with various web technologies, in particular
-      </p>
-      <ul>
-        <li>
-          <p>
-            three.js and related tools for (dynamic) 3D graphics and
-          </p>
-        </li>
-        <li>
-          <p>
-            rendering (dynamic) TeX formulas in HTML
-          </p>
-        </li>
-      </ul>
-      <p>
-        to see whether something like Manim
-        (see <a href="https://github.com/3b1b/manim">here</a>
-        and <a href="https://github.com/ManimCommunity/manim">here</a>)
-        could also be built on top of web technologies.
-      </p>
-    </li>
-  </ol>
-  <p>
-    Goal #1 actually became obsolete when 3Blue1Brown published
-    <a href="https://www.youtube.com/watch?v=cy8r7WSuT1I">his video series</a>
-    on that same topic when I was about to get my presentation completed.
-  </p>
-  <p>
-    But I think goal #2 was achieved.
-    While my web-based tools still have limited functionality
-    and would benefit from some polishing,
-    I see no major obstacles against getting on a par with Manim.
-  </p>
-  <p>
-    The web-based approach has its own advantages:
-  </p>
-  <ul>
-    <li>Live interaction with the slides is possible.</li>
-    <li>Slides can be published easily for the audience to play with.</li>
-  </ul>
-
-  <h2>Graphics Sketchbook</h2>
-
-  <a href="graphics-sketchbook/dist/">Demo</a>,
-  <a href="https://github.com/hcschuetz/graphics-sketchbook">Source</a>
-
-  <p>
-    Some experiments with three.js and react-three-fiber.
-  </p>
-  <p>
-    Features the Stanford Bunny, the Utah Teapot, and demos ported from Manim.
-  </p>
-
-  <h2>Performance study based on the Fast Fourier Transformation (FFT)</h2>
-
-  <a href="fft/build/">Demo</a>,
-  <a href="https://github.com/hcschuetz/fft">Source</a>
-
-  <p>
-    With this project I investigated high-performance-computing capabilities
-    of the Web platform.
-    The Fast Fourier Transformation was chosen as a number-crunching example
-    with non-trivial complexity,
-    but which is still simple enough to implement various versions.
-  </p>
-  <p>
-    The FFT implementations vary in several aspects:
-  </p>
-  <ul>
-    <li>home-grown and third-party implementations</li>
-    <li>from very naive to quite refined algorithms</li>
-    <li>programming languages:
-      TypeScript, C++, Rust, and even a small home-grown language
-    </li>
-    <li>runtime technologies:
-      JavaScript, Web Assembly (WASM),
-      native code (for comparison, not in the browser demo)
-    </li>
-  </ul>
-  <p>
-    The performance tests can take quite a while.
-    Therefore they run in a Web Worker, avoiding a frozen UI
-    and allowing to interrupt the tests.
-  </p>
-  <p>
-    The FFT demo includes two application demos, which are more entertaining:
-  </p>
-  <ul>
-    <li>
-      <a href="fft/build/#ClockworkDemo">One demo</a>
-      uses FFT to create moving graphical output
-      (using SVG or the <code>Canvas</code> API)
-    </li>
-    <li>
-      <a href="fft/build#AudioDemo">The other demo</a>
-      uses FFT to analyze sound input captured with the Web Audio API.
-    </li>
-  </ul>
+    <a href="https://github.com/hcschuetz/octasphere/#readme">README</a>,
+    <a href="octasphere/presentation/dist">presentation</a>
+    (<a href="https://github.com/hcschuetz/octasphere/tree/main/presentation">Source</a>),
+    <a href="octasphere/lab/dist">experimentation lab</a>
+    (<a href="https://github.com/hcschuetz/octasphere/tree/main/lab">Source</a>)
   
-  <h2>Guitar Simulation</h2>
+    <p>
+      This project investigates the rendering of a sphere based on an octahedron.
+      It suggests and compares several approaches for
+      placing the auxiliary vertices of the sphere triangulation.
+    </p>
   
-  <a href="guitar-simulation/">Demo</a>,
-  <a href="https://github.com/hcschuetz/guitar-simulation">Source</a>
+    <h3>Texturing</h3>
+  
+    <a href="https://github.com/hcschuetz/sphere-texturing/#readme">README</a>,
+    <a href="sphere-texturing/map-transformations/dist">presentation</a>
+    (<a href="https://github.com/hcschuetz/sphere-texturing/tree/main/map-transformations">Source</a>),
+    <a href="sphere-texturing/earth/dist">experimentation lab</a>
+    (<a href="https://github.com/hcschuetz/sphere-texturing/tree/main/earth">Source</a>)
+  
+    <p>
+      This project investigates ways to prepare and apply textures for a sphere.
+      In particular it shows how to replace heavily distorted equirectangular maps
+      with less distorted maps based on octaspheres and icospheres.
+      It also provides memory-efficient sprite-sheet layouts.
+    </p>
+  </div>
 
-  <p>
-    While the audio demo in the FFT project analyzes <em>incoming audio</em>,
-    this project uses the Web Audio API to synthesize <em>outgoing audio</em>.
-  </p>
+  <div class="box">
+    <h2>The Scaling Factor in the Gaussian Distribution</h2>
 
-  <h2>TodoMVC with MobX, Custom Elements and JSX</h2>
+    <a href="gaussian-scaling/dist/">Demo</a>,
+    <a href="https://github.com/hcschuetz/gaussian-scaling">Source</a>
 
-  <a href="todomvc-mobx-jsx/dist/">Demo</a>,
-  <a href="https://github.com/hcschuetz/todomvc-mobx-jsx">Source</a>
+    <p>
+      This project had two goals:
+    </p>
+    <ol>
+      <li>
+        <p>
+          Explaining the scaling factor 1/sqrt(2π) in the formula for the
+          Gaussian distribution (also called "normal" distribution).
+        </p>
+      </li>
+      <li>
+        <p>
+          Experimenting with various web technologies, in particular
+        </p>
+        <ul>
+          <li>
+            <p>
+              three.js and related tools for (dynamic) 3D graphics and
+            </p>
+          </li>
+          <li>
+            <p>
+              rendering (dynamic) TeX formulas in HTML
+            </p>
+          </li>
+        </ul>
+        <p>
+          to see whether something like Manim
+          (see <a href="https://github.com/3b1b/manim">here</a>
+          and <a href="https://github.com/ManimCommunity/manim">here</a>)
+          could also be built on top of web technologies.
+        </p>
+      </li>
+    </ol>
+    <p>
+      Goal #1 actually became obsolete when 3Blue1Brown published
+      <a href="https://www.youtube.com/watch?v=cy8r7WSuT1I">his video series</a>
+      on that same topic when I was about to get my presentation completed.
+    </p>
+    <p>
+      But I think goal #2 was achieved.
+      While my web-based tools still have limited functionality
+      and would benefit from some polishing,
+      I see no major obstacles against getting on a par with Manim.
+    </p>
+    <p>
+      The web-based approach has its own advantages:
+    </p>
+    <ul>
+      <li>Live interaction with the slides is possible.</li>
+      <li>Slides can be published easily for the audience to play with.</li>
+    </ul>
+  </div>
 
-  <p>
-    (The demo is just a clone of the standard TodoMVC demo.
-    But inspecting the DOM may be interesting.)
-  </p>
+  <div class="box">
+    <h2>Graphics Sketchbook</h2>
 
-  <p>
-    In this project I have explored an approach for building web applications
-    based on a reactive state
-    (provided by <em>MobX</em> and <em><code>mobx-keystone</code></em>).
-    The idea was that the reactive state can be mapped to a UI dynamically
-    so that a powerful framework such as React is no more needed.
-  </p>
-  <p>
-    I do, however, use a light-weight home-grown <em>JSX</em> implementation,
-    which makes the application code succinct and readable.
-  </p>
-  <p>
-    <em>Custom elements</em>
-    (one of the technologies for Web Components, supported directly by browsers)
-    help to structure the application.
-  </p>
-  <p>
-    The experiment was actually quite successful.
-    The approach should be suitable for projects that require
-    (or benefit from) reactive state management anyway.
-    A typical example for this would be the configuration of complex products.
-  </p>
+    <a href="graphics-sketchbook/dist/">Demo</a>,
+    <a href="https://github.com/hcschuetz/graphics-sketchbook">Source</a>
 
-  <h2>15 Puzzle</h2>
+    <p>
+      Some experiments with three.js and react-three-fiber.
+    </p>
+    <p>
+      Features the Stanford Bunny, the Utah Teapot, and demos ported from Manim.
+    </p>
+  </div>
 
-  <a href="15-puzzle/dist/">Demo</a>,
-  <a href="https://github.com/hcschuetz/15-puzzle">Source</a>
+  <div class="box">
+    <h2>Performance study based on the Fast Fourier Transformation (FFT)</h2>
 
-  <p>
-    An experimental/demo app from 2015 using React and Redux.
-  </p>
-  <p>
-    In 2023 I have modernized the dev/build tools from webpack to vite.
-    Furthermore I have added an explanation how to play the game.
-  </p>
-  <p>
-    But the core implementation and libraries
-    are still the historic ones from 2015.
-  </p>
+    <a href="fft/build/">Demo</a>,
+    <a href="https://github.com/hcschuetz/fft">Source</a>
+
+    <p>
+      With this project I investigated high-performance-computing capabilities
+      of the Web platform.
+      The Fast Fourier Transformation was chosen as a number-crunching example
+      with non-trivial complexity,
+      but which is still simple enough to implement various versions.
+    </p>
+    <p>
+      The FFT implementations vary in several aspects:
+    </p>
+    <ul>
+      <li>home-grown and third-party implementations</li>
+      <li>from very naive to quite refined algorithms</li>
+      <li>programming languages:
+        TypeScript, C++, Rust, and even a small home-grown language
+      </li>
+      <li>runtime technologies:
+        JavaScript, Web Assembly (WASM),
+        native code (for comparison, not in the browser demo)
+      </li>
+    </ul>
+    <p>
+      The performance tests can take quite a while.
+      Therefore they run in a Web Worker, avoiding a frozen UI
+      and allowing to interrupt the tests.
+    </p>
+    <p>
+      The FFT demo includes two application demos, which are more entertaining:
+    </p>
+    <ul>
+      <li>
+        <a href="fft/build/#ClockworkDemo">One demo</a>
+        uses FFT to create moving graphical output
+        (using SVG or the <code>Canvas</code> API)
+      </li>
+      <li>
+        <a href="fft/build#AudioDemo">The other demo</a>
+        uses FFT to analyze sound input captured with the Web Audio API.
+      </li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2>Guitar Simulation</h2>
+
+    <a href="guitar-simulation/">Demo</a>,
+    <a href="https://github.com/hcschuetz/guitar-simulation">Source</a>
+
+    <p>
+      While the audio demo in the FFT project analyzes <em>incoming audio</em>,
+      this project uses the Web Audio API to synthesize <em>outgoing audio</em>.
+    </p>
+  </div>
+
+  <div class="box">
+    <h2>TodoMVC with MobX, Custom Elements and JSX</h2>
+
+    <a href="todomvc-mobx-jsx/dist/">Demo</a>,
+    <a href="https://github.com/hcschuetz/todomvc-mobx-jsx">Source</a>
+
+    <p>
+      (The demo is just a clone of the standard TodoMVC demo.
+      But inspecting the DOM may be interesting.)
+    </p>
+
+    <p>
+      In this project I have explored an approach for building web applications
+      based on a reactive state
+      (provided by <em>MobX</em> and <em><code>mobx-keystone</code></em>).
+      The idea was that the reactive state can be mapped to a UI dynamically
+      so that a powerful framework such as React is no more needed.
+    </p>
+    <p>
+      I do, however, use a light-weight home-grown <em>JSX</em> implementation,
+      which makes the application code succinct and readable.
+    </p>
+    <p>
+      <em>Custom elements</em>
+      (one of the technologies for Web Components, supported directly by browsers)
+      help to structure the application.
+    </p>
+    <p>
+      The experiment was actually quite successful.
+      The approach should be suitable for projects that require
+      (or benefit from) reactive state management anyway.
+      A typical example for this would be the configuration of complex products.
+    </p>
+  </div>
+
+  <div class="box">
+    <h2>Fifteen Puzzle</h2>
+
+    <a href="15-puzzle/dist/">Demo</a>,
+    <a href="https://github.com/hcschuetz/15-puzzle">Source</a>
+
+    <p>
+      An experimental/demo app from 2015 using React and Redux.
+    </p>
+    <p>
+      In 2023 I have modernized the dev/build tools from webpack to vite.
+      Furthermore I have added an explanation how to play the game.
+    </p>
+    <p>
+      But the core implementation and libraries
+      are still the historic ones from 2015.
+    </p>
+  </div>
+
+  <details id="toc" class="shadow">
+    <summary style="font-weight: bolder;">Contents</summary>
+  </details>
+
+  <script type="module">
+    const toc = document.querySelector("#toc");
+    document.querySelectorAll(".box").forEach((box, i) => {
+      box.setAttribute("id", `box_${i+1}`);
+      const a = document.createElement("a");
+      a.href = `#box_${i+1}`;
+      a.textContent = `${i+1}. ${box.querySelector("h2").textContent}`;
+      toc.append(a, document.createElement("br"));
+    })
+  </script>
 </body>
 </html>
