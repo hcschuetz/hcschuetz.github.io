@@ -50,7 +50,7 @@
       right: 8px;
       padding: 5px;
       background-color: #fff;
-      font-size: 100%;
+      font-size: inherit;
     }
     #toc a {
       color: #222;
@@ -333,7 +333,7 @@
       const a = document.createElement("a");
       a.href = `#box_${i+1}`;
       a.textContent = `${i+1}. ${box.querySelector("h2").textContent}`;
-      toc.append(a, document.createElement("br"));
+      toc.append(document.createElement("br"), a);
     })
   </script>
 </body>
