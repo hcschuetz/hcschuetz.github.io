@@ -49,11 +49,15 @@
       right: 8px;
       padding: 5px;
     }
-    #toc a {
-      color: #222;
-      text-decoration: none;
+    #toc-list {
+      display: flex;
+      flex-direction: column;
     }
-    #toc a:hover {
+    #toc-list a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+    #toc-list a:hover {
       color: #777;
     }
     summary {
@@ -210,7 +214,7 @@
   </div>
 
   <div class="box" id="fft-performance">
-    <h2>Performance study based on the Fast Fourier Transformation (FFT)</h2>
+    <h2>Performance Study Based on the Fast Fourier Transformation (FFT)</h2>
 
     <a href="fft/build/">Demo</a>,
     <a href="https://github.com/hcschuetz/fft">Source</a>
@@ -368,15 +372,18 @@
 
   <details id="toc">
     <summary>Contents</summary>
+    <nav>
+      <ol id="toc-list"></ol>
+    </nav>
   </details>
 
   <script type="module">
-    const toc = document.querySelector("#toc");
-    document.querySelectorAll(".box").forEach((box, i) => {
-      const a = document.createElement("a");
+    const tocList = document.querySelector("#toc-list");
+    document.querySelectorAll(".box").forEach(box => {
+      const li = tocList.appendChild(document.createElement("li"));
+      const a = li.appendChild(document.createElement("a"));
       a.href = `#${box.id}`;
-      a.textContent = `${i+1}. ${box.querySelector("h2").textContent}`;
-      toc.append(document.createElement("br"), a);
+      a.textContent = box.querySelector("h2").textContent;
     })
   </script>
 </body>
