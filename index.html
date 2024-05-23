@@ -11,11 +11,21 @@
      */
     body {
       font-family: Arial, Helvetica, sans-serif;
-      max-width: 700px;
+      max-width: 50rem;
       margin: 0 auto;
       padding: 2rem;
       background-color: #ccd;
       color: #222;
+    }
+    @media (min-width: 80rem) {
+      body {
+        max-width: none;
+      }
+      .boxes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 3ex;
+      }
     }
     .box {
       margin: 3ex 0px;
@@ -86,12 +96,16 @@
     investigate technologies or just for fun.
     This site contains a selection of projects that might
     also be of interest for others.
+    (Have a look at my
+    <a href="https://github.com/hcschuetz">Github home page</a>
+    for even more projects.)
   </p>
   <p>
     While many of the demos work on both desktop and mobile devices,
     some expect a physical keyboard.
   </p>
 
+  <div class="boxes">
   <div class="box" id="rendering-spheres">
     <h2>Rendering Spheres</h2>
 
@@ -417,6 +431,7 @@
         </a>
       </li>
     </ul>
+  </div>
   </div>
 
   <details id="toc">
