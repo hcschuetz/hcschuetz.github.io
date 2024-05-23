@@ -21,6 +21,7 @@
       margin: 3ex 0px;
       padding: 12px;
       box-shadow: 3px 4px 7px 3px #888;
+      display: flow-root;
     }
     .box, #toc {
       box-shadow: 3px 4px 7px 3px #888;
@@ -38,7 +39,12 @@
     }
     h3 {
       font-weight: bold;
-      font-size: 100%
+      font-size: 100%;
+    }
+    img {
+      display: block;
+      width: 95%;
+      margin: 0 auto 1ex auto;
     }
     code {
       font-size: 120%;
@@ -88,6 +94,8 @@
 
   <div class="box" id="rendering-spheres">
     <h2>Rendering Spheres</h2>
+
+    <img src="images/icosphere-texture.png">
 
     <p>
       You know how to render a sphere.
@@ -142,6 +150,8 @@
 
   <div class="box" id="gaussian-scaling">
     <h2>The Scaling Factor in the Gaussian Distribution</h2>
+
+    <img src="images/gaussian-integration.png">
 
     <a href="gaussian-scaling/dist/">Demo</a> (keyboard recommended),
     <a href="https://github.com/hcschuetz/gaussian-scaling">Source</a>
@@ -220,6 +230,8 @@
   <div class="box" id="graphics-sketchbook">
     <h2>Graphics Sketchbook</h2>
 
+    <img src="images/teapot.png">
+
     <a href="graphics-sketchbook/dist/">Demo</a> (keyboard recommended),
     <a href="https://github.com/hcschuetz/graphics-sketchbook">Source</a>
 
@@ -233,6 +245,8 @@
 
   <div class="box" id="fft-performance">
     <h2>Performance Study Based on the Fast Fourier Transformation (FFT)</h2>
+
+    <img src="images/autocorrelation.png">
 
     <a href="fft/build/">Demo</a>,
     <a href="https://github.com/hcschuetz/fft">Source</a>
@@ -285,6 +299,12 @@
   <div class="box" id="guitar-simulation">
     <h2>Guitar Simulation</h2>
 
+    <img src="images/notes.png" style="
+      width: 76px;
+      float: left;
+      margin-right: 1em;
+    ">
+
     <a href="guitar-simulation/">Demo</a> (keyboard required),
     <a href="https://github.com/hcschuetz/guitar-simulation">Source</a>
 
@@ -296,6 +316,8 @@
 
   <div class="box" id="todomvc-mobx-jsx">
     <h2>TodoMVC with MobX, Custom Elements and JSX</h2>
+
+    <img src="images/todos.png">
 
     <a href="todomvc-mobx-jsx/dist/">Demo</a>,
     <a href="https://github.com/hcschuetz/todomvc-mobx-jsx">Source</a>
@@ -332,6 +354,12 @@
   <div class="box" id="15-puzzle">
     <h2>Fifteen Puzzle</h2>
 
+    <img src="images/15-puzzle.png" style="
+      width: 158px;
+      float: left;
+      margin-right: 1em;
+    ">
+
     <a href="15-puzzle/dist/">Demo</a>,
     <a href="https://github.com/hcschuetz/15-puzzle">Source</a>
 
@@ -350,6 +378,8 @@
 
   <div class="box" id="babylon-pointcloud-distribution">
     <h2>A Small Contribution to BabylonJS' PointsCloudSystem</h2>
+
+    <img src="images/pointcloud.png">
 
     <p>
       This is a small example of "getting the maths right".
