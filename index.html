@@ -25,6 +25,23 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         column-gap: 3ex;
+        /*
+        A (Pinterest-like) "masonry layout" would be cooler:
+
+          For each box (in order):
+            Append the box (without stretching) to the currently shortest column.
+
+        But
+
+          grid-template-rows: masonry;
+
+        is not (yet) available in CSS.
+        (One can get close, but with boxes placed in "column-major order".)
+
+        And it's probably not worth the hassle to implement masonry layout in JS.
+        (Even fitting https://masonry.desandro.com/ to my needs seems to be
+        non-trivial.)
+        */
       }
     }
     .box {
