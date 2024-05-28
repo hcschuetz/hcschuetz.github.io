@@ -507,20 +507,15 @@
           }
         }
         shortestCol.appendChild(box);
-      }
 
-      const {hash} = document.location;
-      if (hash) {
-        // On Edge (and probably also Chrome) we have to actually change the
-        // hash component to trigger scrolling.
-        // In Firefox just setting hash to its current value suffices.
-        document.location.hash = "";
-        document.location.hash = hash;
+        if (document.location.hash === `#${box.id}`) {
+          box.scrollIntoView({behavior: "smooth"});
+        }
       }
     }
 
-    doLayout();
     window.addEventListener("resize", doLayout);
+    doLayout();
   </script>
 
   <script type="module">
