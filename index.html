@@ -470,11 +470,16 @@
       }
       lastWidth = winWidth;
 
+      const nCols = Math.min(boxes.length, Math.max(1, Math.floor(winWidth / 600)));
+      if (nCols === 1 && cols.length === 1) {
+        // No re-ordering possible in a single column:
+        return;
+      }
+
       const myInvocationNo = ++invocationNo;
 
       aux.append(...boxes);
 
-      const nCols = Math.min(boxes.length, Math.max(1, Math.floor(winWidth / 600)));
       boxGrid.style.gridTemplateColumns = `repeat(${nCols}, 1fr)`;
       while (cols.length < nCols) {
         const col = document.createElement("div");
