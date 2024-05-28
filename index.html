@@ -11,41 +11,21 @@
      */
     body {
       font-family: Arial, Helvetica, sans-serif;
-      max-width: 50rem;
-      margin: 0 auto;
       padding: 2rem;
       background-color: #ccd;
       color: #222;
     }
-    @media (min-width: 80rem) {
-      body {
-        max-width: none;
-      }
-      .boxes {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 3ex;
-        /*
-        A (Pinterest-like) "masonry layout" would be cooler:
-
-          For each box (in order):
-            Append the box (without stretching) to the currently shortest column.
-
-        But
-
-          grid-template-rows: masonry;
-
-        is not (yet) available in CSS.
-        (One can get close, but with boxes placed in "column-major order".)
-
-        And it's probably not worth the hassle to implement masonry layout in JS.
-        (Even fitting https://masonry.desandro.com/ to my needs seems to be
-        non-trivial.)
-        */
-      }
+    .header {
+      max-width: 50em;
+      margin-bottom: 8ex;
+    }
+    #box-grid {
+      display: grid;
+      column-gap: 20px;
+      align-items: start;
     }
     .box {
-      margin: 3ex 0px;
+      margin-bottom: 20px;
       padding: 12px;
       box-shadow: 3px 4px 7px 3px #888;
       display: flow-root;
@@ -55,18 +35,20 @@
       background-color: #fff;
     }
     h1 {
-      font-size: 150%;
+      font-size: 200%;
       margin-bottom: 0;
     }
     h2 {
       margin-top: 0;
-      font-size: 120%;
+      font-size: 150%;
       font-weight: bold;
       border-bottom: 1px solid #222;
     }
     h3 {
       font-weight: bold;
-      font-size: 100%;
+      font-size: 120%;
+      margin-top: 2ex;
+      margin-bottom: 1ex;
     }
     img {
       display: block;
@@ -82,6 +64,7 @@
       top: 8px;
       right: 8px;
       padding: 10px;
+      display: none;
     }
     summary {
       font-weight: bolder;
@@ -101,6 +84,7 @@
   </style>
 </head>
 <body>
+  <div class="header">
   <h1>Code and Demos</h1>
   <p style="
     font-size: 120%;
@@ -121,8 +105,9 @@
     While many of the demos work on both desktop and mobile devices,
     some expect a physical keyboard.
   </p>
+  </div>
 
-  <div class="boxes">
+  <div id="aux">
   <div class="box" id="rendering-spheres">
     <h2>Rendering Spheres</h2>
 
@@ -450,6 +435,7 @@
     </ul>
   </div>
   </div>
+  <div id="box-grid"></div>
 
   <details id="toc">
     <summary>Contents</summary>
@@ -459,6 +445,88 @@
   </details>
 
   <script type="module">
+    // Simple implementation of a "masonry" layout.
+    // Reacts to window resizing but not to content changes.
+    // (For the time being our content is static.)
+
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+    const aux = document.querySelector("#aux");
+    // Hide aux only if this script actually runs, not in CSS/HTML above:
+    aux.style.display = "none";
+    const boxGrid = document.querySelector("#box-grid");
+    const boxes = [...document.querySelectorAll(".box")];
+    const cols = [];
+
+    let lastWidth = -1;
+    let invocationNo = 0;
+
+    async function doLayout() {
+      const winWidth = window.innerWidth;
+      if (winWidth === lastWidth) {
+        // Some mobiles fire resize events even when the size actually has not
+        // changed.  Do nothing in this case.
+        return;
+      }
+      lastWidth = winWidth;
+
+      const myInvocationNo = ++invocationNo;
+
+      aux.append(...boxes);
+
+      const nCols = Math.min(boxes.length, Math.max(1, Math.floor(winWidth / 600)));
+      boxGrid.style.gridTemplateColumns = `repeat(${nCols}, 1fr)`;
+      while (cols.length < nCols) {
+        const col = document.createElement("div");
+        col.style.display = "flex";
+        col.style.flexDirection = "column";
+        cols.push(col);
+        boxGrid.append(col);
+      }
+      while (cols.length > nCols) {
+        boxGrid.removeChild(cols.pop());
+      }
+
+      for (const box of boxes) {
+        // Technically, sleeping is not needed.
+        // It just looks better, but this is a matter of taste.
+        await sleep(50);
+        // Check for staleness upon wake-up:
+        if (myInvocationNo < invocationNo) {
+          // A more recent invocation is running.  So stop this one.
+          return;
+        }
+
+        // Append the box to the (currently) shortest column:
+        let shortestCol = null;
+        let shortestColHeight = Infinity;
+        for (const col of cols) {
+          if (col.offsetHeight < shortestColHeight) {
+            shortestCol = col;
+            shortestColHeight = col.offsetHeight;
+          }
+        }
+        shortestCol.appendChild(box);
+      }
+
+      const {hash} = document.location;
+      if (hash) {
+        // On Edge (and probably also Chrome) we have to actually change the
+        // hash component to trigger scrolling.
+        // In Firefox just setting hash to its current value suffices.
+        document.location.hash = "";
+        document.location.hash = hash;
+      }
+    }
+
+    doLayout();
+    window.addEventListener("resize", doLayout);
+  </script>
+
+  <script type="module">
+    // Make the TOC box only visible is this script is actually running:
+    document.querySelector("#toc").style.display = "inherit";
+
     const tocList = document.querySelector("#toc-list");
     document.querySelectorAll(".box").forEach(box => {
       const li = tocList.appendChild(document.createElement("li"));
