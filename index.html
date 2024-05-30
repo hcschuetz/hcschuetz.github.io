@@ -46,7 +46,7 @@
       padding: 12px;
       display: flow-root;
     }
-    .box, #toc {
+    .box, #toc-btn, #toc {
       box-shadow: 3px 4px 7px 3px #0008;
       background-color: #fff;
     }
@@ -74,19 +74,24 @@
     code {
       font-size: 120%;
     }
-    #toc {
+    #toc-btn, #toc {
       position: fixed;
       z-index: 10;
       top: 8px;
       right: 8px;
       padding: 10px;
+    }
+    #toc-btn {
+      display: none; /* will become visible when/if JS runs */
+      border: none;
+      font-weight: bolder;
+      font-size: inherit;
+    }
+    #toc {
       display: none;
     }
-    summary {
-      font-weight: bolder;
-    }
     #toc-list {
-      margin: 1ex 0 0 1em;
+      margin: 0 0 0 1em;
       /* re-enable numbering disabled by sanitize.css: */
       list-style-type: decimal;
     }
@@ -454,12 +459,10 @@
   </div>
   <div id="box-grid"></div>
 
-  <details id="toc">
-    <summary>Contents</summary>
-    <nav>
-      <ol id="toc-list"></ol>
-    </nav>
-  </details>
+  <button id="toc-btn">Contents</button>
+  <nav id="toc">
+    <ol id="toc-list"></ol>
+  </nav>
 
   <script type="module">
     // Simple implementation of a "masonry" layout.
@@ -543,8 +546,13 @@
   </script>
 
   <script type="module">
-    // Make the TOC box only visible is this script is actually running:
-    document.querySelector("#toc").style.display = "inherit";
+    const tocBtn = document.querySelector("#toc-btn");
+    // Make the contents button only visible is this script is actually running:
+    tocBtn.style.display = "inherit";
+    const toc = document.querySelector("#toc");
+    window.addEventListener("click", event => {
+      toc.style.display = event.target === tocBtn ? "inherit" : "none";
+    });
 
     const tocList = document.querySelector("#toc-list");
     document.querySelectorAll(".box").forEach(box => {
@@ -552,7 +560,7 @@
       const a = li.appendChild(document.createElement("a"));
       a.href = `#${box.id}`;
       a.textContent = box.querySelector("h2").textContent;
-    })
+    });
   </script>
 </body>
 </html>
