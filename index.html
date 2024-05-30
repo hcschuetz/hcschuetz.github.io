@@ -69,7 +69,16 @@
     img {
       display: block;
       width: 100%;
+    }
+    img, svg {
       margin: 0 auto 3ex auto;
+    }
+    svg rect {
+      fill: #162;
+    }
+    svg text {
+      font: 2px sans-serif;
+      fill: #fff;
     }
     code {
       font-size: 120%;
@@ -480,6 +489,43 @@
         </a>
       </li>
     </ul>
+  </div>
+
+  <div class="box" id="masonry-layout">
+    <svg width="100%" viewBox="0 0 43 20" xmlns="http://www.w3.org/2000/svg">
+      <rect width="10" height= "7" x= "0" y= "0"></rect><text x= "4.5" y= "2"> 1</text>
+      <rect width="10" height="14" x="11" y= "0"></rect><text x="15.5" y= "2"> 2</text>
+      <rect width="10" height="10" x="22" y= "0"></rect><text x="26.5" y= "2"> 3</text>
+      <rect width="10" height= "5" x="33" y= "0"></rect><text x="37.5" y= "2"> 4</text>
+      <rect width="10" height= "6" x="33" y= "6"></rect><text x="37.5" y= "8"> 5</text>
+      <rect width="10" height= "5" x= "0" y= "8"></rect><text x= "4.5" y="10"> 6</text>
+      <rect width="10" height= "4" x="22" y="11"></rect><text x="26.5" y="13"> 7</text>
+      <rect width="10" height= "4" x="33" y="13"></rect><text x="37.5" y="15"> 8</text>
+      <rect width="10" height= "3" x= "0" y="14"></rect><text x= "4.5" y="16"> 9</text>
+      <rect width="10" height= "4" x="11" y="15"></rect><text x="14.8" y="17">10</text>
+      <rect width="10" height= "4" x="22" y="16"></rect><text x="25.8" y="18">11</text>
+    </svg>
+
+    <h2>Masonry Layout</h2>
+
+    <a href="https://github.com/hcschuetz/hcschuetz.github.io">Source</a>
+
+    <p>
+      If you view the current page in a sufficiently wide window
+      (or if you reduce your browser's font size
+      so that the window appears wide enough to the document),
+      it will be displayed with multiple columns and a "masonry" layout.
+      That is, tiles are traversed in order and
+      each tile is appended to the column that is shortest at the time.
+    </p>
+    <p>
+      As of mid 2024 a masonry layout can only be approximated by CSS.
+      Solutions with correct ordering of the tiles require JavaScript code.
+      Browser vendors are working on CSS support for masonry but currently
+      do not agree on the architecture.  Once standardized CSS support is
+      widely available, the corresponding JavaScript code for this page
+      can be replaced with a simple CSS declaration.
+    </p>
   </div>
   </div>
   <div id="box-grid"></div>
