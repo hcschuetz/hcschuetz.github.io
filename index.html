@@ -8,6 +8,19 @@
   <style>
     /* According to caniuse.com there are still too many browsers in use
      * without CSS-nesting support.  So I unnested. */
+    :root {
+      /* minimal column width if there are multiple columns;
+       * measured in px but given as plain number */
+      --min-col-width: 500;
+      /* At a window width of `3px * --min-col-width` we get 3 columns,
+       * For a slightly narrower window we get 2 columns,
+       * making a column almost `1.5px * --max-col-width` wide.
+       * (For more precision we might also take margins and gaps into account.)
+       * For consistency use (at least) this value as the width limit
+       * for a single-column layout.
+       * */
+      --max-col-width: calc(1.5px*var(--min-col-width));
+    }
     body {
       font-family: Arial, Helvetica, sans-serif;
       padding: 2rem;
@@ -15,7 +28,7 @@
       color: #222;
     }
     .header {
-      max-width: 50em;
+      max-width: var(--max-col-width);
       margin-bottom: 8ex;
     }
     #box-grid {
@@ -29,7 +42,7 @@
     }
     .box {
       margin-bottom: 30px;
-      max-width: 700px;
+      max-width: var(--max-col-width);
       padding: 12px;
       display: flow-root;
     }
@@ -459,6 +472,9 @@
     // Hide aux only if this script actually runs, not in CSS/HTML above:
     aux.style.display = "none";
     const boxGrid = document.querySelector("#box-grid");
+    const minColWidth = Number.parseFloat(
+      getComputedStyle(boxGrid).getPropertyValue("--min-col-width")
+    );
     const boxes = [...document.querySelectorAll(".box")];
     const cols = [];
 
@@ -474,7 +490,7 @@
       }
       lastWidth = winWidth;
 
-      const nCols = Math.min(boxes.length, Math.max(1, Math.floor(winWidth / 600)));
+      const nCols = Math.min(boxes.length, Math.max(1, Math.floor(winWidth / minColWidth)));
       if (nCols === 1 && cols.length === 1) {
         // No re-ordering possible in a single column:
         return;
