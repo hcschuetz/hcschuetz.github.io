@@ -100,7 +100,7 @@
       display: none;
     }
     #toc-list {
-      margin: 0 0 0 1em;
+      margin: 0 0 0 1.5em;
       /* re-enable numbering disabled by sanitize.css: */
       list-style-type: decimal;
     }
@@ -316,24 +316,24 @@
     </p>
   </div>
 
-  <div class="box" id="graphics-sketchbook">
-    <img src="images/teapot.png"
-      alt="The Utah teapot with some construction lines"
+  <div class="box" id="polyhedron-star">
+    <img src="images/Thurston-star.png"
+      alt="A star-shaped polygon with marks for folding edges"
     >
 
-    <h2>Graphics Sketchbook</h2>
+    <h2>Folding a Star to a Polyhedron</h2>
 
-    <a href="graphics-sketchbook/dist/">Demo</a> (keyboard recommended),
-    <a href="https://github.com/hcschuetz/graphics-sketchbook">Source</a>
+    <a href="polyhedron-star/dist/">Demo</a>,
+    <a href="https://github.com/hcschuetz/polyhedron-star">Source</a>
 
     <p>
-      Experiments with three.js and react-three-fiber.
+      Visualization of a geometric construction transforming between two- and
+      three-dimensional objects.
     </p>
     <p>
-      Features the Stanford Bunny, the Utah Teapot,
-      and some ports of
-      <a href="https://www.youtube.com/playlist?list=PLsMrDyoG1sZm6-jIUQCgN3BVyEVOZz3LQ">
-        these Manim demos</a>.
+      Implemented with Preact and BabylonJS.
+      Preact signals turned out to be very handy for communicating between the
+      Preact-based UI and the BabylonJS-based 3D graphics.
     </p>
   </div>
 
@@ -489,6 +489,27 @@
         </a>
       </li>
     </ul>
+  </div>
+
+  <div class="box" id="graphics-sketchbook">
+    <img src="images/teapot.png"
+      alt="The Utah teapot with some construction lines"
+    >
+
+    <h2>Graphics Sketchbook</h2>
+
+    <a href="graphics-sketchbook/dist/">Demo</a> (keyboard recommended),
+    <a href="https://github.com/hcschuetz/graphics-sketchbook">Source</a>
+
+    <p>
+      Early experiments with three.js and react-three-fiber.
+    </p>
+    <p>
+      Features the Stanford Bunny, the Utah Teapot,
+      and some ports of
+      <a href="https://www.youtube.com/playlist?list=PLsMrDyoG1sZm6-jIUQCgN3BVyEVOZz3LQ">
+        these Manim demos</a>.
+    </p>
   </div>
 
   <div class="box" id="masonry-layout">
