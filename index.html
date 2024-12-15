@@ -633,8 +633,17 @@
       }
     }
 
+    // re-layout needed when the window width changes:
     window.addEventListener("resize", doLayout);
-    doLayout();
+
+    // These are usually too many re-layouts, but:
+    // - Image loading might hang and we nevertheless want to see something
+    //   early.  But the layout should be adapted when the images finally arrive.
+    // - Browsers behave differently.  (My older code with just `doLayout();`
+    //   didn't work on Safari.  This version hopefully does.)
+    window.addEventListener("DOMContentLoaded", doLayout);
+    window.addEventListener("load", doLayout);
+    try { doLayout(); } catch (e) { /* ignore */ }
   </script>
 
   <script type="module">
