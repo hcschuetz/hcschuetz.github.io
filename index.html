@@ -277,46 +277,6 @@
     </p>
   </div>
 
-  <div class="box" id="todomvc-mobx-jsx">
-    <img src="images/todos.png"
-      alt="The well-known TodoMVC demo"
-    >
-
-    <h2>TodoMVC with MobX, Custom Elements and JSX</h2>
-
-    <a href="todomvc-mobx-jsx/dist/">Demo</a>,
-    <a href="https://github.com/hcschuetz/todomvc-mobx-jsx">Source</a>
-
-    <p>
-      (The demo is just a clone of the standard TodoMVC demo,
-      which you may have seen many times.
-      Inspecting the DOM for its custom elements is more interesting.)
-    </p>
-
-    <p>
-      In this project I have explored an approach for building web applications
-      based on a reactive state
-      (provided by <em>MobX</em> and <em><code>mobx-keystone</code></em>).
-      The idea was that the reactive state can be mapped to a UI dynamically
-      so that a powerful framework such as React is no more needed.
-    </p>
-    <p>
-      I do, however, use a light-weight home-grown <em>JSX</em> implementation
-      to achieve succinct and readable application code.
-    </p>
-    <p>
-      <em>Custom elements</em>
-      (one of the technologies for Web Components, supported directly by browsers)
-      help to structure the application.
-    </p>
-    <p>
-      The experiment was actually quite successful.
-      The approach should be suitable for projects that require
-      (or benefit from) reactive state management anyway.
-      A typical example for this would be the configuration of complex products.
-    </p>
-  </div>
-
   <div class="box" id="polyhedron-star">
     <img src="images/Thurston-star.png"
       alt="A star-shaped polygon with marks for folding edges"
@@ -336,6 +296,32 @@
       Preact signals turned out to be very handy for communicating between the
       Preact-based UI and the BabylonJS-based 3D graphics.
     </p>
+  </div>
+
+  <div class="box" id="mastodon-toots">
+    <img src="https://joinmastodon.org/logos/logo-full-black.svg"
+      alt="The mastodon logo"
+      style="padding: 36px; background-color: #6364FF;"
+    >
+
+    <h2>Mastodon Embedding</h2>
+
+    <a href="mastodon-toots/">Demo</a>,
+    <a href="https://github.com/hcschuetz/mastodon-toots/">Source</a>
+
+    <p>
+      A web component for embedding (recent) toots from a mastodon feed
+      in a web page.
+    </p>
+    <p>
+      The feed may consist of
+    </p>
+    <ul>
+      <li>toots from some account,</li>
+      <li>toots with some hashtag,</li>
+      <li>replies to some toot,</li>
+      <li>or a server's public timeline.</li>
+    </ul>
   </div>
 
   <div class="box" id="gaussian-scaling">
@@ -418,6 +404,46 @@
       <li>Live interaction with the slides is possible.</li>
       <li>Slides can be published easily for the audience to play with.</li>
     </ul>
+  </div>
+
+  <div class="box" id="todomvc-mobx-jsx">
+    <img src="images/todos.png"
+      alt="The well-known TodoMVC demo"
+    >
+
+    <h2>TodoMVC with MobX, Custom Elements and JSX</h2>
+
+    <a href="todomvc-mobx-jsx/dist/">Demo</a>,
+    <a href="https://github.com/hcschuetz/todomvc-mobx-jsx">Source</a>
+
+    <p>
+      (The demo is just a clone of the standard TodoMVC demo,
+      which you may have seen many times.
+      Inspecting the DOM for its custom elements is more interesting.)
+    </p>
+
+    <p>
+      In this project I have explored an approach for building web applications
+      based on a reactive state
+      (provided by <em>MobX</em> and <em><code>mobx-keystone</code></em>).
+      The idea was that the reactive state can be mapped to a UI dynamically
+      so that a powerful framework such as React is no more needed.
+    </p>
+    <p>
+      I do, however, use a light-weight home-grown <em>JSX</em> implementation
+      to achieve succinct and readable application code.
+    </p>
+    <p>
+      <em>Custom elements</em>
+      (one of the technologies for Web Components, supported directly by browsers)
+      help to structure the application.
+    </p>
+    <p>
+      The experiment was actually quite successful.
+      The approach should be suitable for projects that require
+      (or benefit from) reactive state management anyway.
+      A typical example for this would be the configuration of complex products.
+    </p>
   </div>
 
   <div class="box" id="15-puzzle">
