@@ -604,59 +604,64 @@
     let invocationNo = 0;
 
     async function doLayout() {
-      const winWidth = window.innerWidth;
-      if (winWidth === lastWidth) {
-        // Some mobiles fire resize events even when the size actually has not
-        // changed.  Do nothing in this case.
-        return;
-      }
-      lastWidth = winWidth;
+      try {
+        const winWidth = window.innerWidth;
+        if (winWidth === lastWidth) {
+          // Some mobiles fire resize events even when the size actually has not
+          // changed.  Do nothing in this case.
+          return;
+        }
+        lastWidth = winWidth;
 
-      const nCols = Math.min(boxes.length, Math.max(1, Math.floor(winWidth / minColWidth)));
-      if (nCols === 1 && cols.length === 1) {
-        // No re-ordering possible in a single column:
-        return;
-      }
-
-      const myInvocationNo = ++invocationNo;
-
-      aux.append(...boxes);
-
-      boxGrid.style.gridTemplateColumns = `repeat(${nCols}, 1fr)`;
-      while (cols.length < nCols) {
-        const col = document.createElement("div");
-        col.classList.add("column");
-        cols.push(col);
-        boxGrid.append(col);
-      }
-      while (cols.length > nCols) {
-        boxGrid.removeChild(cols.pop());
-      }
-
-      for (const box of boxes) {
-        // Technically, sleeping is not needed.
-        // It just looks better, but this is a matter of taste.
-        await sleep(50);
-        // Check for staleness upon wake-up:
-        if (myInvocationNo < invocationNo) {
-          // A more recent invocation is running.  So stop this one.
+        const nCols = Math.min(boxes.length, Math.max(1, Math.floor(winWidth / minColWidth)));
+        if (nCols === 1 && cols.length === 1) {
+          // No re-ordering possible in a single column:
           return;
         }
 
-        // Append the box to the (currently) shortest column:
-        let shortestCol = null;
-        let shortestColHeight = Infinity;
-        for (const col of cols) {
-          if (col.offsetHeight < shortestColHeight) {
-            shortestCol = col;
-            shortestColHeight = col.offsetHeight;
+        const myInvocationNo = ++invocationNo;
+
+        aux.append(...boxes);
+
+        boxGrid.style.gridTemplateColumns = `repeat(${nCols}, 1fr)`;
+        while (cols.length < nCols) {
+          const col = document.createElement("div");
+          col.classList.add("column");
+          cols.push(col);
+          boxGrid.append(col);
+        }
+        while (cols.length > nCols) {
+          boxGrid.removeChild(cols.pop());
+        }
+
+        for (const box of boxes) {
+          // Technically, sleeping is not needed.
+          // It just looks better, but this is a matter of taste.
+          await sleep(50);
+          // Check for staleness upon wake-up:
+          if (myInvocationNo < invocationNo) {
+            // A more recent invocation is running.  So stop this one.
+            return;
+          }
+
+          // Append the box to the (currently) shortest column:
+          let shortestCol = null;
+          let shortestColHeight = Infinity;
+          for (const col of cols) {
+            if (col.offsetHeight < shortestColHeight) {
+              shortestCol = col;
+              shortestColHeight = col.offsetHeight;
+            }
+          }
+          shortestCol.appendChild(box);
+
+          if (document.location.hash === `#${box.id}`) {
+            box.scrollIntoView({behavior: "smooth"});
           }
         }
-        shortestCol.appendChild(box);
-
-        if (document.location.hash === `#${box.id}`) {
-          box.scrollIntoView({behavior: "smooth"});
-        }
+      }
+      catch (exception) {
+        console.warn("exception during layout:", exception);
       }
     }
 
@@ -670,7 +675,7 @@
     //   didn't work on Safari.  This version hopefully does.)
     window.addEventListener("DOMContentLoaded", doLayout);
     window.addEventListener("load", doLayout);
-    try { doLayout(); } catch (e) { /* ignore */ }
+    doLayout();
   </script>
 
   <script type="module">
